@@ -1,0 +1,6 @@
+Why of doing things?
+Why are we learning this?
+Why is this the answer to the problem?
+Why is this answer better than the other?
+
+data structures and algorithms, when and why to use them, how to implement them, how to solve problems with them.
