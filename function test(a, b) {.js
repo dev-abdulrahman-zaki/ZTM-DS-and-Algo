@@ -9,4 +9,4 @@ const test2 = (a, b) => {
 };
 
 console.log(test(1, 2));
-console.log(test2(1), 2);
+console.log(test2(1, 2));
