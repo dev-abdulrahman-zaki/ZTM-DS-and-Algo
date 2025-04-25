@@ -1,10 +1,10 @@
 function test(a, b) {
-  console.log(this); // Why global object ?
+  console.log(this);
   console.log(arguments);
 }
 
 const test2 = (a, b) => {
-  console.log(this); // Why {} ?
+  console.log(this);
   console.log(arguments);
 };
 
