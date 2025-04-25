@@ -15,6 +15,10 @@ class Logger {
     const self = this;
     // Solution: Use the stored reference to access methods
     setTimeout(function () {
+      logger.log("Using logger reference"); // 'self' is accessible in closure
+    }, 1000);
+
+    setTimeout(function () {
       self.log("Using self reference"); // 'self' is accessible in closure
     }, 1000);
 
