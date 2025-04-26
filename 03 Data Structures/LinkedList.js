@@ -67,9 +67,16 @@ class LinkedList {
     return this.printList();
   }
 
-  remove(index) {}
+  remove(index) {
+    if (index < 0 || index > this.length) {
+      throw new Error("Index out of bounds");
+    }
+    const targetNode = this.lookup(index - 1);
+    targetNode.next = targetNode.next.next;
+    this.length--;
+    return this.printList();
+  }
 
-  // get(index)
   // reverse()
 }
 
@@ -79,5 +86,6 @@ myLinkedList.append(3);
 myLinkedList.prepend(0);
 // console.log(myLinkedList.printList());
 myLinkedList.insert(3, 4);
+myLinkedList.remove(1);
 console.log(myLinkedList.printList());
 // console.log(myLinkedList);
