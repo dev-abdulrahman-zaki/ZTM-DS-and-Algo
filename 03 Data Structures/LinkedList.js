@@ -38,6 +38,15 @@ class LinkedList {
     }
     return array;
   }
+
+  lookup(index) {
+    let targetNode = this.head;
+    for (let i = 0; i < index; i++) {
+      targetNode = targetNode.next;
+    }
+    return targetNode;
+  }
+
   insert(index, value) {
     if (index < 0 || index > this.length) {
       throw new Error("Index out of bounds");
@@ -51,10 +60,7 @@ class LinkedList {
       return this.printList();
     }
     const newNode = new Node(value);
-    let targetNode = this.head;
-    for (let i = 0; i < index - 1; i++) {
-      targetNode = targetNode.next;
-    }
+    const targetNode = this.lookup(index - 1);
     newNode.next = targetNode.next;
     targetNode.next = newNode;
     this.length++;
@@ -64,7 +70,6 @@ class LinkedList {
   remove(index) {}
 
   // get(index)
-  // printList() {}
   // reverse()
 }
 
@@ -73,6 +78,6 @@ myLinkedList.append(2);
 myLinkedList.append(3);
 myLinkedList.prepend(0);
 // console.log(myLinkedList.printList());
-myLinkedList.insert(1, 4);
+myLinkedList.insert(3, 4);
 console.log(myLinkedList.printList());
 // console.log(myLinkedList);
