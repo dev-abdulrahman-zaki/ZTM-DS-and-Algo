@@ -14,7 +14,7 @@ class DoublyLinkedList {
   }
   append(value) {
     const newNode = new Node(value);
-    this.tail.prev  = this.tail;
+    this.tail.prev = this.tail;
     this.tail.next = newNode; // Connect current last node to new last node
     this.tail = newNode; // Update tail reference to point to new last node
     this.length++;
@@ -23,7 +23,7 @@ class DoublyLinkedList {
   prepend(value) {
     const newNode = new Node(value);
     newNode.next = this.head;
-    this.head.prev = newNode;   
+    this.head.prev = newNode;
     this.head = newNode;
     this.length++;
     return this;
@@ -59,9 +59,12 @@ class DoublyLinkedList {
       return this.printList();
     }
     const newNode = new Node(value);
-    const targetNode = this.lookup(index - 1);
-    newNode.next = targetNode.next;
-    targetNode.next = newNode;
+    const targetNode1 = this.lookup(index - 1);
+    const targetNode2 = targetNode1.next;
+    newNode.next = targetNode2;
+    newNode.prev = targetNode1;
+    targetNode1.next = newNode;
+    targetNode2.prev = newNode;
     this.length++;
     return this.printList();
   }
