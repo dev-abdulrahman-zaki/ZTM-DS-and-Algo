@@ -1,26 +1,36 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
 class LinkedList {
   constructor(value) {
-    this.head = {
-      value: value,
-      next: null,
-    };
+    this.head = new Node(value);
     this.tail = this.head;
     this.length = 1;
   }
   append(value) {
-    const newNode = {
-      value: value,
-      next: null,
-    };
+    const newNode = new Node(value);
     console.log("step 0:", this);
-    this.tail.next = newNode; // Note that: this.tail = this.head
+    this.tail.next = newNode; // Connect current last node to new last node
     console.log("step 1:", this);
-    this.tail = newNode; // Clear the refrence from this.tail to this.head
+    this.tail = newNode; // Update tail reference to point to new last node
     console.log("step 2:", this);
     this.length++;
     // console.log(this);
     return this;
   }
+
+  prepend(value) {}
+
+  printList() {}
+
+  // insert(index, value)
+  // remove(index)
+  // get(index)
+  // reverse()
 }
 
 const myLinkedList = new LinkedList(1);
