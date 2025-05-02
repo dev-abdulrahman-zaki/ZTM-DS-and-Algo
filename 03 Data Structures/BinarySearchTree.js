@@ -11,7 +11,9 @@ class BinarySearchTree {
     this.root = null;
   }
   insert(value) {}
-  lookup(value) {}
+  lookup(value) {
+    // return node or null
+  }
 //   remove(value) {}
 }
 

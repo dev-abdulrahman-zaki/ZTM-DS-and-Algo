@@ -1,0 +1,6 @@
+Give me your feedback on my implementation.
+If there is something wrong, don't give me the full solution — just highlight the mistake to give me an opportunity to edit my solution.
+
+Give me a diagram of a BinarySearchTree with pointers to help me understand it through visual representation and complete the implementation of insert and lookup on my own.
+
+add pointers to it to help me track the node references.
