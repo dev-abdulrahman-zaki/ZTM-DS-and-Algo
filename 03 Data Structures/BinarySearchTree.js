@@ -12,27 +12,31 @@ class BinarySearchTree {
   }
   insert(value) {
     const newNode = new Node(value);
+
     if (this.root === null) {
       this.root = newNode;
-      return this;
-    }
-    let currentNode = this.root;
-    let parentNode = null;
-    let childPosition = "";
-    while (currentNode !== null) {
-      if (value > currentNode.value) {
-        parentNode = currentNode;
-        childPosition = "right";
-        currentNode = currentNode.right;
-      } else {
-        parentNode = currentNode;
-        childPosition = "left";
-        currentNode = currentNode.left;
+    } else {
+      let currentNode = this.root;
+      while (true) {
+        if (currentNode.value > value) {
+          // Left
+          // If there is no left child, add the new node here
+          if (!currentNode.left) {
+            currentNode.left = newNode;
+            return this;
+          }
+          // If there is a left child, move to the left child and repeat the process until we find an empty spot to insert the new node
+          currentNode = currentNode.left;
+        } else {
+          // Right
+          if (!currentNode.right) {
+            currentNode.right = newNode;
+            return this;
+          }
+          currentNode = currentNode.right;
+        }
       }
     }
-
-    parentNode[childPosition] = newNode;
-    return this;
   }
   lookup(value) {
     // return node or null
