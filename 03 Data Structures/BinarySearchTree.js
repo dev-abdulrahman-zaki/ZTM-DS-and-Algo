@@ -62,7 +62,66 @@ class BinarySearchTree {
       }
     }
   }
-  //   remove(value) {}
+  remove(value) {
+    if (!this.root) return false;
+
+    // Find the node and its parent
+    let currentNode = this.root;
+    let parentNode = null;
+    let isLeftChild = false;
+
+    // Search for the node (similar to lookup but track parent)
+    while (currentNode && currentNode.value !== value) {
+      parentNode = currentNode;
+      if (value < currentNode.value) {
+        currentNode = currentNode.left;
+        isLeftChild = true;
+      } else {
+        currentNode = currentNode.right;
+        isLeftChild = false;
+      }
+    }
+
+    // Node not found
+    if (!currentNode) return false;
+
+    // Handle different cases based on children
+    // Case 1: No children
+    if (!currentNode.left && !currentNode.right) {
+      if (!parentNode) {
+        // Is root
+        this.root = null;
+      } else {
+        parentNode[isLeftChild ? "left" : "right"] = null;
+      }
+    }
+    // Case 2: One child
+    else if (!currentNode.left) {
+      // Only has right child
+      if (!parentNode) {
+        // Is root
+        this.root = currentNode.right; // Because // Only has right child
+      } else {
+        parentNode[isLeftChild ? "left" : "right"] = currentNode.right;
+      }
+    } else if (!currentNode.right) {
+      // Only has left child
+      if (!parentNode) {
+        // Is root
+        this.root = currentNode.left;
+      } else {
+        parentNode[isLeftChild ? "left" : "right"] = currentNode.left;
+      }
+    }
+    // Case 3: Two children
+    else {
+      // Find successor (minimum in right subtree)
+      // Replace currentNode's value with successor's
+      // Remove the successor
+    }
+
+    return true;
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -74,9 +133,9 @@ tree.insert(170);
 tree.insert(15);
 tree.insert(1);
 // tree.remove(170);
-console.log(JSON.stringify(traverse(tree.root)));
-console.log(tree.lookup(9));
-console.log(tree.lookup(2));
+// console.log(JSON.stringify(traverse(tree.root)));
+// console.log(tree.lookup(170));
+// console.log(tree.lookup(2));
 //     9
 //  4     20
 //1  6  15  170
