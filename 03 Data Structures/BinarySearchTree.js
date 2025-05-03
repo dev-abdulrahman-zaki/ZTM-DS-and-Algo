@@ -116,10 +116,28 @@ class BinarySearchTree {
     // Case 3: Two children
     else {
       // Find successor (minimum in right subtree)
-      // Replace currentNode's value with successor's
-      // Remove the successor
-    }
+      let successorParent = currentNode;
+      let successor = currentNode.right;
 
+      // Keep going left to find the minimum value
+      while (successor.left) {
+        successorParent = successor;
+        successor = successor.left;
+      }
+
+      // Replace currentNode's value with successor's
+      currentNode.value = successor.value;
+
+      // Remove the successor
+      // The successor will either have no children or one right child
+      if (successorParent === currentNode) {
+        // Special case: the right child has no left child
+        successorParent.right = successor.right;
+      } else {
+        // Normal case: successor is deep in the left branch of right subtree
+        successorParent.left = successor.right;
+      }
+    }
     return true;
   }
 }
