@@ -3,10 +3,18 @@ class Graph {
     this.numberOfNodes = 0;
     this.adjacentList = {};
   }
-  addVertex(node) {}
+
+  addVertex(node) {
+    this.adjacentList[node] = [];
+    this.numberOfNodes++;
+  }
+
   addEdge(node1, node2) {
     //undirected Graph
+    this.adjacentList[node1].push(node2);
+    this.adjacentList[node2].push(node1);
   }
+
   showConnections() {
     const allNodes = Object.keys(this.adjacentList);
     for (let node of allNodes) {
@@ -47,3 +55,12 @@ myGraph.showConnections();
 // 4-->3 2 5
 // 5-->4 6
 // 6-->5
+// {
+//     "0": [1, 2],
+//     "1": [0, 2, 3],
+//     "2": [0, 1, 4],
+//     "3": [1, 4],
+//     "4": [2, 3, 5],
+//     "5": [4, 6],
+//     "6": [5],
+// }
