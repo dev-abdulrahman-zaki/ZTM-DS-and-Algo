@@ -7,6 +7,9 @@ function findFactorialIterative(number) {
 }
 
 function findFactorialRecursive(number) {
+  if (number < 2) {
+    return 1;
+  }
   if (number === 2) {
     return 2;
   }
@@ -15,4 +18,3 @@ function findFactorialRecursive(number) {
 
 findFactorialIterative(5);
 findFactorialRecursive(5);
-
