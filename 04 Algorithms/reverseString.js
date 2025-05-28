@@ -8,19 +8,9 @@ function reverseString(str) {
 
 console.log(reverseString("yoyo master"));
 
-// let counter = 7;
-// let reversedStr = "";
-// function reverseStringRecursive(str) {
-//   // counter = str.length;
-//   if (counter < 0) {
-//     return;
-//   }
-//   counter--;
-//   // return (reversedStr += reverseStringRecursive(str));
-// }
 
 let reversedStr = "";
-function reverseStringRecursive(str) {
+function reverseStringRecursive(str) {  
   if (reversedStr.length === str.length) {
     return reversedStr;
   }
